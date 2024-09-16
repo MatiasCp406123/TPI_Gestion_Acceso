@@ -1,10 +1,10 @@
-package ar.edu.utn.frc.lc.iii.repositories;
+package com.example.Gestion_Acceso.repositories;
 
-import ar.edu.utn.frc.lc.iii.entities.DummyEntity;
-import ar.edu.utn.frc.lc.iii.models.Dummy;
+
+import com.example.Gestion_Acceso.entities.DummyEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DummyRepository extends JpaRepository<DummyEntity,Long>{
+public interface DummyRepository extends JpaRepository<DummyEntity,Long> {
 }

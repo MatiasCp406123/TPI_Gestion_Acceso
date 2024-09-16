@@ -1,4 +1,4 @@
-package ar.edu.utn.frc.lc.iii.entities;
+package com.example.Gestion_Acceso.entities;
 
 import jakarta.persistence.*;
 

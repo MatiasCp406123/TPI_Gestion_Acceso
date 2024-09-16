@@ -1,10 +1,10 @@
-package ar.edu.utn.frc.lc.iii.services.impl;
+package com.example.Gestion_Acceso.services.impl;
 
-import ar.edu.utn.frc.lc.iii.models.Dummy;
-import ar.edu.utn.frc.lc.iii.repositories.DummyRepository;
-import ar.edu.utn.frc.lc.iii.services.DummyService;
+import com.example.Gestion_Acceso.models.Dummy;
+import com.example.Gestion_Acceso.repositories.DummyRepository;
+import com.example.Gestion_Acceso.services.DummyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

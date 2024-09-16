@@ -1,4 +1,4 @@
-package ar.edu.utn.frc.lc.iii.models;
+package com.example.Gestion_Acceso.models;
 
 import lombok.*;
 

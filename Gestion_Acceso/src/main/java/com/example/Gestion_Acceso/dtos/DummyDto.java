@@ -1,4 +1,4 @@
-package ar.edu.utn.frc.lc.iii.dtos;
+package com.example.Gestion_Acceso.dtos;
 
 import lombok.*;
 
