@@ -1,4 +1,5 @@
-package ar.edu.utn.frc.lc.iii.config;
+package com.example.Gestion_Acceso.configs;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.modelmapper.Conditions;

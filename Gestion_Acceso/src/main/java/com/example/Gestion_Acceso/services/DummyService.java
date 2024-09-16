@@ -1,8 +1,6 @@
-package ar.edu.utn.frc.lc.iii.services;
+package com.example.Gestion_Acceso.services;
 
-import ar.edu.utn.frc.lc.iii.dtos.DummyDto;
-import ar.edu.utn.frc.lc.iii.models.Dummy;
-
+import com.example.Gestion_Acceso.models.Dummy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
