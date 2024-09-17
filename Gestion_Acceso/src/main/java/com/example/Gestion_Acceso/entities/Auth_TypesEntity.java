@@ -1,11 +1,16 @@
-import javax.persistence.*;
+package com.example.Gestion_Acceso.entities;
+
+import jakarta.persistence.*;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.util.Date;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "auth_types")
-public class AuthTypes {
+public class Auth_TypesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
