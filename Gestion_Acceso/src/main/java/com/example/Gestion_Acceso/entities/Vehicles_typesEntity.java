@@ -1,6 +1,7 @@
 package com.example.Gestion_Acceso.entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "vehicles")
+@Data
 public class Vehicles_typesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
