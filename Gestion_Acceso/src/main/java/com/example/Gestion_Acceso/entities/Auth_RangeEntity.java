@@ -20,7 +20,7 @@ public class Auth_RangeEntity {
     private Integer neighbor_Id;
     @ManyToOne
     @JoinColumn(name = "user_allowed_id")
-    private Ussers_AllowedEntity ussers_allowed_id;
+    private Users_AllowedEntity ussers_allowed_id;
     private LocalDate initDate;
     private LocalDate endDate;
     private Integer createdUser;
