@@ -3,10 +3,11 @@ package com.example.Gestion_Acceso.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-
+@Data
 @Table(name = "qr_codes")
 @Entity
 @AllArgsConstructor

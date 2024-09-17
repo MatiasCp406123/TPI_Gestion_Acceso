@@ -3,9 +3,10 @@ package com.example.Gestion_Acceso.entities;
 import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.util.Date;
-
+@Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
