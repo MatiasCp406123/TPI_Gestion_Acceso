@@ -1,44 +1,44 @@
-package com.example.Gestion_Acceso.entities;
+    package com.example.Gestion_Acceso.entities;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+    import jakarta.persistence.*;
+    import jakarta.validation.constraints.Email;
+    import jakarta.validation.constraints.NotBlank;
+    import lombok.AllArgsConstructor;
+    import lombok.Data;
+    import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+    import java.time.LocalDateTime;
 
-@Data
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "users_allowed")
-public class Users_AllowedEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Data
+    @Entity
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Table(name = "users_allowed")
+    public class Users_AllowedEntity {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Long id;
 
-    private String document;
+        private String document;
 
-    @ManyToOne
-    @JoinColumn(name = "users_type_id")
-    private Users_allowed_typesEntity userType;
+        @ManyToOne
+        @JoinColumn(name = "users_type_id")
+        private Users_allowed_typesEntity userType;
 
-    @ManyToOne
-    @JoinColumn(name = "document_type_id")
-    private Document_TypeEntity documentType;
+        @ManyToOne
+        @JoinColumn(name = "document_type_id")
+        private Document_TypeEntity documentType;
 
-    private Integer createdUser;
-    private LocalDateTime createdDate;
-    private Integer lastUpdatedUser;
-    private LocalDateTime lastUpdatedDate;
+        private Integer createdUser;
+        private LocalDateTime createdDate;
+        private Integer lastUpdatedUser;
+        private LocalDateTime lastUpdatedDate;
 
-    @NotBlank(message = "El email no puede estar vacío")
-    @Email(message = "Debe ser una dirección de email válida")
-    @Column(name = "email", length = 255, nullable = false, unique = true)
-    private String email;
+        @NotBlank(message = "El email no puede estar vacío")
+        @Email(message = "Debe ser una dirección de email válida")
+        @Column(name = "email", length = 255, nullable = false, unique = true)
+        private String email;
 
-    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
-    private Boolean emailSent = false;
-}
+        @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT FALSE")
+        private Boolean emailSent = false;
+    }

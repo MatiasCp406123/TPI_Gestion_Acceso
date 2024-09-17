@@ -1,6 +1,5 @@
 package com.example.Gestion_Acceso.services;
 
-import com.example.Gestion_Acceso.models.Dummy;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

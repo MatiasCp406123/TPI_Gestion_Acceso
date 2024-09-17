@@ -1,7 +1,6 @@
 package com.example.Gestion_Acceso.controllers;
 
 import com.example.Gestion_Acceso.dtos.DummyDto;
-import com.example.Gestion_Acceso.models.Dummy;
 import com.example.Gestion_Acceso.services.DummyService;
 import org.springframework.beans.factory.annotation.Autowired;
 
