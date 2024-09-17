@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "users_allowed")
 public class Ussers_AllowedEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String document;
     @ManyToOne

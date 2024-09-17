@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "users_allowed_types")
 public class Users_allowed_typesEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
     private Integer crated_user;
