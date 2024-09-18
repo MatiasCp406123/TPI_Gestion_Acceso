@@ -15,9 +15,6 @@ import java.util.List;
 @RequestMapping("/api/users-allowed")
 public class UserAllowedController {
 
-    // Crear el logger
-    private static final Logger logger = LoggerFactory.getLogger(UserAllowedController.class);
-
     private final UserAllowedServiceImpl userAllowedService;
 
     public UserAllowedController(UserAllowedServiceImpl userAllowedService) {
@@ -29,8 +26,6 @@ public class UserAllowedController {
         try {
             return ResponseEntity.ok(userAllowedService.getAllUsers());
         } catch (IOException e) {
-            // Loguear la excepción
-            logger.error("Error al obtener los usuarios permitidos", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
