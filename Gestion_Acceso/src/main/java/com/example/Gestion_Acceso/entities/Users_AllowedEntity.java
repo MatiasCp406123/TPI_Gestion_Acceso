@@ -28,11 +28,11 @@
         @ManyToOne
         @JoinColumn(name = "document_type_id")
         private Document_TypeEntity documentType;
-
-        private Integer createdUser;
-        private LocalDateTime createdDate;
-        private Integer lastUpdatedUser;
-        private LocalDateTime lastUpdatedDate;
+        private String name;
+        private Integer created_user;
+        private LocalDateTime created_date;
+        private Integer last_updated_user;
+        private LocalDateTime last_updated_date;
 
         @NotBlank(message = "El email no puede estar vacío")
         @Email(message = "Debe ser una dirección de email válida")
