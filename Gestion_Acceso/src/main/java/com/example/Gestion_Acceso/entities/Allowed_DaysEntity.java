@@ -17,6 +17,7 @@ public class Allowed_DaysEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "\"day\"")
     private LocalDate day;
     private LocalDateTime initHour;
     private LocalDateTime endHour;

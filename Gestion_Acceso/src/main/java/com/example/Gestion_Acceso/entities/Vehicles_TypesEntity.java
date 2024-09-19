@@ -1,27 +1,22 @@
 package com.example.Gestion_Acceso.entities;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "vehicles")
+@Table(name = "vehicles_type")
 @Data
 public class Vehicles_typesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "vehicle_type_id")
-    private Integer vehicleTypeId;
-
-    private String plate;
-
-    private String insurace;
-
+    private String description;
     @Column(name = "created_user")
     private Integer createdUser;
 

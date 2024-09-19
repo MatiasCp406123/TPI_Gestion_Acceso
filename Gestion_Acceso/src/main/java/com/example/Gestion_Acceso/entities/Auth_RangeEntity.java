@@ -21,10 +21,10 @@ public class Auth_RangeEntity {
     @ManyToOne
     @JoinColumn(name = "user_allowed_id")
     private Users_AllowedEntity ussers_allowed_id;
-    private LocalDate initDate;
-    private LocalDate endDate;
-    private Integer createdUser;
-    private LocalDateTime createdDate;
-    private Integer lastUpdatedUser;
-    private LocalDateTime lastUpdatedDate;
+    private LocalDate init_date;
+    private LocalDate end_date;
+    private Integer created_user;
+    private LocalDateTime created_date;
+    private Integer last_updated_user;
+    private LocalDateTime last_updated_date;
 }

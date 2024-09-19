@@ -12,8 +12,8 @@ import java.util.List;
 public class UserAllowed {
     private Long id;
     private String document;
-    private Long usersTypeId;
-    private Long documentTypeId;
+    private UserAllowedType userType;
+    private DocumentType documentType;
     private Long createdUser;
     private LocalDateTime createdDate;
     private Long lastUpdatedUser;
