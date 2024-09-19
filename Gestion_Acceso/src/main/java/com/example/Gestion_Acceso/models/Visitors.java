@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vehicle {
-    private Long id;
-    private Long vehicleTypeId;
-    private String plate;
-    private String insurance;
+public class Visitors {
+    private UserAllowed userAllowed;
+    private AuthRange authRange;
 }

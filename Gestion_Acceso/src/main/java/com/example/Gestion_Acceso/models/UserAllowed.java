@@ -1,7 +1,5 @@
 package com.example.Gestion_Acceso.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,9 +12,9 @@ import java.util.List;
 public class UserAllowed {
     private Long id;
     private String document;
-    private Integer usersTypeId;
-    private Long documentTypeId;
-    private Integer createdUser;
+    private UserAllowedType userType;
+    private DocumentType documentType;
+    private Long createdUser;
     private LocalDateTime createdDate;
     private Long lastUpdatedUser;
     private LocalDateTime lastUpdatedDate;

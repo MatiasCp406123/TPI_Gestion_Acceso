@@ -16,8 +16,8 @@ public class Document_TypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private Integer createdUser;
-    private LocalDateTime createdDate;
-    private Integer lastUpdatedUser;
-    private LocalDateTime lastUpdatedDate;
+    private Integer created_user;
+    private LocalDateTime created_date;
+    private Integer last_updated_user;
+    private LocalDateTime last_updated_date;
 }
