@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 public class UserAllowedType {
     private Long id;
     private String description;
-    private Long createdUser;
+    private Integer crated_user;
     private LocalDateTime createdDate;
-    private Long lastUpdatedUser;
-    private LocalDateTime lastUpdatedDate;
+    private Integer lastUpdateUser;
+    private LocalDateTime lastUpdateDate;
 }
