@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Vehicle {
     private Long id;
-    private Long vehicleTypeId;
+    private VehicleType vehicleTypeId;
     private String plate;
     private String insurance;
 }

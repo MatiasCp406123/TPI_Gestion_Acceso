@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 public class AuthRange {
     private Long id;
-    private Long neighborId;
+    private Integer neighbor_Id;
     private LocalDate initDate;
     private LocalDate endDate;
     private List<AllowedDay> allowedDays;

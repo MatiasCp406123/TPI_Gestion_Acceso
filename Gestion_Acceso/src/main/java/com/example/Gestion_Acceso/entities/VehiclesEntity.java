@@ -14,9 +14,9 @@ public class VehiclesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "vehicle_type_id")
-    private Integer vehicleTypeId;
+    @OneToOne
+    @JoinColumn(name = "vehicle_type_id")
+    private Vehicles_typesEntity vehicleTypeId;
 
     private String plate;
 

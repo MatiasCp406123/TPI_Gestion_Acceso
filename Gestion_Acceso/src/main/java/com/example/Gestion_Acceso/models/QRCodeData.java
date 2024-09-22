@@ -9,9 +9,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QRCodeData {
-    private String visitorId;
+    private Integer visitorId;
+    private String name;
     private String document;
     private String documentType;
+    private String vehicle;
+    private String plate;
     private LocalDateTime generatedDate;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

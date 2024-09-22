@@ -13,6 +13,6 @@ import java.util.Date;
 @Data
 public class Allowed_DaysDto {
     private LocalDate day;
-    private LocalDateTime init_hour;
-    private LocalDateTime end_hour;
+    private LocalDate init_date;
+    private LocalDate end_date;
 }

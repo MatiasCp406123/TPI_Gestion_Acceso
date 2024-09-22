@@ -10,4 +10,5 @@ import lombok.NoArgsConstructor;
 public class NewVisitorDto {
     private NewAuthRangeDto newAuthRangeDto;
     private NewUserAllowedDto newUserAllowedDto;
+    private NewVehicleDto newVehicleDto;
 }

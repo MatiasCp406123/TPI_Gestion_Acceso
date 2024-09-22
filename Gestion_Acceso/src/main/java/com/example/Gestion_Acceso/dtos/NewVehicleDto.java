@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class NewVehicleDto {
     private String plate;
-    private VehicleTypeDto vehicleTypeDto;
+    private VehicleTypeDto vehicleTypeId;
     private String insurace;
 }

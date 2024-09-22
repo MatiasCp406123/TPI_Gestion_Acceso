@@ -12,6 +12,6 @@ import java.time.LocalDateTime;
 public class AllowedDay {
     private Long id;
     private LocalDate day;
-    private LocalDateTime initHour;
-    private LocalDateTime endHour;
+    private LocalDate init_date;
+    private LocalDate end_date;
 }

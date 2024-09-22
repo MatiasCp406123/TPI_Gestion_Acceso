@@ -35,15 +35,33 @@ public class VisitorQRServiceImpl implements VisitorQRService {
 
     @Override
     public QRCode_Entity generateAndSaveQRForVisitor(Visitors visitor) throws Exception {
-        QRCodeData qrCodeData = new QRCodeData(
-                UUID.randomUUID().toString(),
-                visitor.getUserAllowed().getDocument(),
-                visitor.getUserAllowed().getDocumentType().getDescription(),
-                LocalDateTime.now(),
-                visitor.getAuthRange().getInitDate().atStartOfDay(),
-                visitor.getAuthRange().getEndDate().atTime(23, 59, 59)
-        );
+        QRCodeData qrCodeData = new QRCodeData();
+       if(visitor.getUserAllowed().getVehicles().get(0)!=null) {
 
+                qrCodeData.setVisitorId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
+                qrCodeData.setName(visitor.getUserAllowed().getName());
+                qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
+                qrCodeData.setDocumentType(visitor.getUserAllowed().getDocumentType().getDescription());
+                qrCodeData.setVehicle(visitor.getUserAllowed().getVehicles().get(0).getVehicleTypeId().getDescription());
+                qrCodeData.setPlate(visitor.getUserAllowed().getVehicles().get(0).getPlate());
+                qrCodeData.setGeneratedDate(LocalDateTime.now());
+                qrCodeData.setStartDate(visitor.getUserAllowed().getAuthRanges().get(0).getInitDate().atStartOfDay());
+                qrCodeData.setEndDate(visitor.getUserAllowed().getAuthRanges().get(0).getEndDate().atTime(23, 59, 59));
+
+
+       }
+       else{
+           qrCodeData.setVisitorId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
+           qrCodeData.setName(visitor.getUserAllowed().getName());
+           qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
+           qrCodeData.setDocumentType(visitor.getUserAllowed().getDocumentType().getDescription());
+           qrCodeData.setVehicle("not vehicle");
+           qrCodeData.setPlate("not plate");
+           qrCodeData.setGeneratedDate(LocalDateTime.now());
+           qrCodeData.setStartDate(visitor.getUserAllowed().getAuthRanges().get(0).getInitDate().atStartOfDay());
+           qrCodeData.setEndDate(visitor.getUserAllowed().getAuthRanges().get(0).getEndDate().atTime(23, 59, 59));
+
+       }
         String qrCodeJson = objectMapper.writeValueAsString(qrCodeData);
 
         QRCode_Entity qrCodeEntity = new QRCode_Entity();

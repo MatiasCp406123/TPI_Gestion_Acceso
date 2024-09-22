@@ -12,12 +12,13 @@ import java.util.List;
 public class UserAllowed {
     private Long id;
     private String document;
+    private String name;
     private UserAllowedType userType;
     private DocumentType documentType;
-    private Long createdUser;
-    private LocalDateTime createdDate;
-    private Long lastUpdatedUser;
-    private LocalDateTime lastUpdatedDate;
+    private Integer created_user;
+    private LocalDateTime created_date;
+    private Integer last_updated_user;
+    private LocalDateTime last_updated_date;
     private String email;
     private boolean emailSent;
     private List<AuthRange> authRanges;

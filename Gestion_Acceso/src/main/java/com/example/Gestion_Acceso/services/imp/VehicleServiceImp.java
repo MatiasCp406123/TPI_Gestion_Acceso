@@ -27,16 +27,20 @@ public class VehicleServiceImp implements VehicleService {
     @Autowired
     private Users_AllowedService users_allowedService;
     @Override
-    public Vehicle createVehicle(NewVehicleDto newVehicleDto,Long id) {
+    public Vehicle createVehicle(NewVehicleDto newVehicleDto) {
+        if(newVehicleDto==null){
+            return null;
+        }
         Date date=new Date();
-        VehicleType vehicleType =modelMapper.map(vehicle_typeRepository.getByDescription(newVehicleDto.getVehicleTypeDto().getDescription()), VehicleType.class);
+        VehicleType vehicleType =modelMapper.map(vehicle_typeRepository.getByDescription(newVehicleDto.getVehicleTypeId().getDescription()), VehicleType.class);
         Vehicle vehicle=new Vehicle();
-        vehicle.setVehicleTypeId(vehicleType.getId());
+        vehicle.setVehicleTypeId(vehicleType);
         vehicle.setPlate(newVehicleDto.getPlate());
         vehicle.setInsurance(newVehicleDto.getInsurace());
         VehiclesEntity vehiclesEntity=modelMapper.map(vehicle,VehiclesEntity.class);
         vehiclesEntity.setCreatedUser(1);
         vehiclesEntity.setCreatedDate(date);
-        return vehicle;
+        Vehicle response=modelMapper.map(vehicleRepository.save(vehiclesEntity), Vehicle.class);
+        return response;
     }
 }
