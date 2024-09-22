@@ -26,7 +26,7 @@ public class VisitorServiceImp implements VisitorService {
         AuthRange authRange=authRangesService.creatRange(newVisitorDto.getNewAuthRangeDto(),userAllowed.getId());
         List<AllowedDay>allowedDayList=allowedDaysService.CreateAllowedDays(newVisitorDto.getNewAuthRangeDto().getAllowedDaysDtos(),authRange.getId());
         Vehicle vehicle=vehicleService.createVehicle(newVisitorDto.getNewVehicleDto());
-        if(vehicle==null){
+        if(vehicle!=null){
             List<Vehicle>vehicleList=new ArrayList<>();
             vehicleList.add(vehicle);
             userAllowed.setVehicles(vehicleList);

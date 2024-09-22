@@ -4,5 +4,5 @@ INSERT into document_type(description)
 values('DNI');
 INSERT into vehicles_type(description)
 values ('Car');
-    INSERT into vehicles_type(description)
+INSERT into vehicles_type(description)
 values ('Motorcycle');
