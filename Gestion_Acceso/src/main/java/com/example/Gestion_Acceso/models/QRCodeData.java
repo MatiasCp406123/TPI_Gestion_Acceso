@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class QRCodeData {
-    private Integer visitorId;
+    private Integer neighborId;
     private String name;
     private String document;
     private String documentType;

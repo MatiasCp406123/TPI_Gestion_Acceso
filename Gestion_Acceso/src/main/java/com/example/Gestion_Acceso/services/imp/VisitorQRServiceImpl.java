@@ -38,7 +38,7 @@ public class VisitorQRServiceImpl implements VisitorQRService {
         QRCodeData qrCodeData = new QRCodeData();
        if(visitor.getUserAllowed().getVehicles().get(0)!=null) {
 
-                qrCodeData.setVisitorId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
+                qrCodeData.setNeighborId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
                 qrCodeData.setName(visitor.getUserAllowed().getName());
                 qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
                 qrCodeData.setDocumentType(visitor.getUserAllowed().getDocumentType().getDescription());
@@ -51,7 +51,7 @@ public class VisitorQRServiceImpl implements VisitorQRService {
 
        }
        else{
-           qrCodeData.setVisitorId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
+           qrCodeData.setNeighborId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
            qrCodeData.setName(visitor.getUserAllowed().getName());
            qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
            qrCodeData.setDocumentType(visitor.getUserAllowed().getDocumentType().getDescription());
