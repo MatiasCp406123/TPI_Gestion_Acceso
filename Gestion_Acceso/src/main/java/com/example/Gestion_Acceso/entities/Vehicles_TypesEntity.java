@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Table(name = "vehicles_type")
 @Data
-public class Vehicles_typesEntity {
+public class Vehicles_TypesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

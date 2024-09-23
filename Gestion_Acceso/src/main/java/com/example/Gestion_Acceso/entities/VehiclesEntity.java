@@ -16,7 +16,7 @@ public class VehiclesEntity {
     private Integer id;
     @OneToOne
     @JoinColumn(name = "vehicle_type_id")
-    private Vehicles_typesEntity vehicleTypeId;
+    private Vehicles_TypesEntity vehicleTypeId;
 
     private String plate;
 

@@ -2,7 +2,7 @@ package com.example.Gestion_Acceso.services.imp;
 
 import com.example.Gestion_Acceso.dtos.NewVehicleDto;
 import com.example.Gestion_Acceso.entities.VehiclesEntity;
-import com.example.Gestion_Acceso.entities.Vehicles_typesEntity;
+
 import com.example.Gestion_Acceso.models.Vehicle;
 import com.example.Gestion_Acceso.models.VehicleType;
 import com.example.Gestion_Acceso.repositories.Types.Vehicle_TypeRepository;
