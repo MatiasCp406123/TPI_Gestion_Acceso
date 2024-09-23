@@ -14,9 +14,10 @@ public class VehiclesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
+
+    @ManyToOne
     @JoinColumn(name = "vehicle_type_id")
-    private Vehicles_TypesEntity vehicleTypeId;
+    private Vehicles_TypesEntity vehicleType;
 
     private String plate;
 
