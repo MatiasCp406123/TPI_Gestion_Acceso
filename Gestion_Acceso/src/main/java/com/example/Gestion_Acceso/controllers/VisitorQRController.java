@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/visitor-qr")
-@CrossOrigin("LA URL DEL FRONT")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class VisitorQRController {
 
     @Autowired
