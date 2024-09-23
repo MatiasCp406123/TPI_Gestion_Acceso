@@ -24,5 +24,6 @@ class User_Allowed_TypeRepositoryTest {
         Users_allowed_typesEntity response=user_allowed_typeRepository.getByDescription("Worker");
         Assertions.assertNotNull(response);
         Assertions.assertEquals("Worker",response.getDescription());
+
     }
 }

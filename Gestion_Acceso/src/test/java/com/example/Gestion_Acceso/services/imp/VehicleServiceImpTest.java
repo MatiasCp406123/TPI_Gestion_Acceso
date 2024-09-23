@@ -9,6 +9,7 @@ import com.example.Gestion_Acceso.repositories.Types.Vehicle_TypeRepository;
 import com.example.Gestion_Acceso.repositories.VehicleRepository;
 import com.example.Gestion_Acceso.services.VehicleService;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,7 +34,7 @@ class VehicleServiceImpTest {
 
         VehiclesEntity vehiclesEntity=new VehiclesEntity();
         vehiclesEntity.setId(1);
-        vehiclesEntity.setVehicleTypeId(vehicles_typesEntity);
+        vehiclesEntity.setVehicleType(vehicles_typesEntity);
         vehiclesEntity.setPlate("12ed3");
         vehiclesEntity.setInsurace("ok");
         Mockito.when(vehicleRepository.save(Mockito.any(VehiclesEntity.class))).thenReturn(vehiclesEntity);
