@@ -11,5 +11,5 @@ public class Vehicle {
     private Long id;
     private VehicleType vehicleTypeId;
     private String plate;
-    private String insurance;
+    private String insurace;
 }

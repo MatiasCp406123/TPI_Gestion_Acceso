@@ -1,6 +1,6 @@
 package com.example.Gestion_Acceso.repositories.Types;
 
-import com.example.Gestion_Acceso.entities.Vehicles_typesEntity;
+import com.example.Gestion_Acceso.entities.Vehicles_TypesEntity;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ class Vehicle_TypeRepositoryTest {
     private Vehicle_TypeRepository vehicle_typeRepository;
     @Test
     void getByDescription() {
-        Vehicles_typesEntity vehiclesTypesEntity=new Vehicles_typesEntity();
+        Vehicles_TypesEntity vehiclesTypesEntity=new Vehicles_TypesEntity();
         vehiclesTypesEntity.setDescription("Truck");
         testEntityManager.persist(vehiclesTypesEntity);
         testEntityManager.flush();
-        Vehicles_typesEntity response=vehicle_typeRepository.getByDescription("Truck");
+        Vehicles_TypesEntity response=vehicle_typeRepository.getByDescription("Truck");
         Assertions.assertNotNull(response);
         Assertions.assertEquals("Truck",response.getDescription());
     }

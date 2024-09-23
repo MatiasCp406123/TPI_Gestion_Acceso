@@ -36,7 +36,7 @@ public class VehicleServiceImp implements VehicleService {
         Vehicle vehicle=new Vehicle();
         vehicle.setVehicleTypeId(vehicleType);
         vehicle.setPlate(newVehicleDto.getPlate());
-        vehicle.setInsurance(newVehicleDto.getInsurace());
+        vehicle.setInsurace(newVehicleDto.getInsurace());
         VehiclesEntity vehiclesEntity=modelMapper.map(vehicle,VehiclesEntity.class);
         vehiclesEntity.setCreatedUser(1);
         vehiclesEntity.setCreatedDate(date);
