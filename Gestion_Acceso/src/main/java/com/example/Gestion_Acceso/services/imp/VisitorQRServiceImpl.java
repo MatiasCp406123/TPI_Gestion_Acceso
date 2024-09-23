@@ -36,8 +36,8 @@ public class VisitorQRServiceImpl implements VisitorQRService {
     @Override
     public QRCode_Entity generateAndSaveQRForVisitor(Visitors visitor) throws Exception {
         QRCodeData qrCodeData = new QRCodeData();
-       if(visitor.getUserAllowed().getVehicles().get(0)!=null) {
-
+       if(visitor.getUserAllowed().getVehicles()!=null) {
+    
                 qrCodeData.setNeighborId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
                 qrCodeData.setName(visitor.getUserAllowed().getName());
                 qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
