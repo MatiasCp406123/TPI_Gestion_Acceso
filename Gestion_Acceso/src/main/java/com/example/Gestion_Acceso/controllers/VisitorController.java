@@ -5,10 +5,11 @@ import com.example.Gestion_Acceso.models.Visitors;
 import com.example.Gestion_Acceso.services.VisitorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
+@CrossOrigin("LA URL DEL FRONT")
 @RestController
 public class VisitorController {
     @Autowired
