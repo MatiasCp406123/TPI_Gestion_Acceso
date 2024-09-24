@@ -1,13 +1,16 @@
 package com.example.Gestion_Acceso.services.imp;
 
+import com.example.Gestion_Acceso.entities.Document_TypeEntity;
 import com.example.Gestion_Acceso.entities.QRCode_Entity;
 import com.example.Gestion_Acceso.entities.Users_AllowedEntity;
+import com.example.Gestion_Acceso.entities.Users_allowed_typesEntity;
 import com.example.Gestion_Acceso.models.*;
 import com.example.Gestion_Acceso.repositories.QRCodeRepository;
 import com.example.Gestion_Acceso.services.VisitorQRService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.modelmapper.ModelMapper;
@@ -20,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -107,5 +111,36 @@ class VisitorQRServiceImplTest {
 
     @Test
     void getQRCodeById() {
+        Long QrCodeId=22L;
+
+        Users_allowed_typesEntity usersAllowedTypesEntity=new Users_allowed_typesEntity();
+        usersAllowedTypesEntity.setId(1L);
+        usersAllowedTypesEntity.setDescription("Fede");
+        usersAllowedTypesEntity.setCreated_user(33);
+
+        Document_TypeEntity documentTypeEntity=new Document_TypeEntity();
+        documentTypeEntity.setId(1l);
+        documentTypeEntity.setDescription("DNI");
+
+        Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
+        users_allowedEntity.setId(1L);
+        users_allowedEntity.setUserType(usersAllowedTypesEntity);
+        users_allowedEntity.setDocumentType(documentTypeEntity);
+
+
+        QRCode_Entity qrCodeEntity= new QRCode_Entity();
+        qrCodeEntity.setId(QrCodeId);
+        qrCodeEntity.setQrCodeData("asd");
+        qrCodeEntity.setIsValid(true);
+        qrCodeEntity.setUserAllowed(users_allowedEntity);
+
+        Mockito.when(qrCodeRepository.findById(22L)).thenReturn(Optional.of(qrCodeEntity));
+        QRCode_Entity result=qrCodeRepository.findById(22l).get();
+
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(qrCodeEntity.getId(),result.getId());
+
+
+
     }
 }

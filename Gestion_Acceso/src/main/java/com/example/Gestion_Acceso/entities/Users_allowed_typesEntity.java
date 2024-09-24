@@ -17,7 +17,7 @@ public class Users_allowed_typesEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
-    private Integer crated_user;
+    private Integer created_user;
     private LocalDateTime createdDate;
     private Integer lastUpdateUser;
     private LocalDateTime lastUpdateDate;
