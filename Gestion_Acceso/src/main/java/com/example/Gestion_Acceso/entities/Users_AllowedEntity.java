@@ -21,13 +21,13 @@
 
         private String document;
 
-        @ManyToOne
-        @JoinColumn(name = "users_type_id")
-        private Users_allowed_typesEntity userType;
 
-        @ManyToOne
+        @JoinColumn(name = "users_type_id")
+        private Long userType;
+
+
         @JoinColumn(name = "document_type_id")
-        private Document_TypeEntity documentType;
+        private Long documentType;
         private String name;
         private Integer created_user;
         private LocalDateTime created_date;

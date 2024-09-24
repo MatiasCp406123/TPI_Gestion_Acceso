@@ -35,14 +35,14 @@ public class VehicleServiceImp implements VehicleService {
         VehicleType vehicleType =modelMapper.map(vehicle_typeRepository.getByDescription(newVehicleDto.getVehicleTypeId().getDescription()), VehicleType.class);
 
         Vehicle vehicle=new Vehicle();
-        vehicle.setVehicleTypeId(vehicleType);
+        vehicle.setVehicleType(vehicleType.getId());
         vehicle.setPlate(newVehicleDto.getPlate());
         vehicle.setInsurace(newVehicleDto.getInsurace());
         VehiclesEntity vehiclesEntity=modelMapper.map(vehicle,VehiclesEntity.class);
 
         vehiclesEntity.setCreatedUser(1);
         vehiclesEntity.setCreatedDate(date);
-        Vehicle response=modelMapper.map(vehicleRepository.save(vehiclesEntity), Vehicle.class);
-        return response;
+        return modelMapper.map(vehicleRepository.save(vehiclesEntity), Vehicle.class);
+       // return response;
     }
 }

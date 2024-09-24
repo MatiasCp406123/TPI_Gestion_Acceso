@@ -36,12 +36,12 @@ public class User_AllowedServiceImp implements Users_AllowedService {
         UserAllowed userAllowed=new UserAllowed();
         userAllowed.setDocument(newUserAllowedDto.getDocument());
         userAllowed.setEmail(newUserAllowedDto.getEmail());
-        userAllowed.setUserType(userAllowedType);
-        userAllowed.setDocumentType(documentType);
+        userAllowed.setUserType(userAllowedType.getId());
+        userAllowed.setDocumentType(documentType.getId());
         userAllowed.setName(newUserAllowedDto.getName());
         Users_AllowedEntity usersAllowedEntity=modelMapper.map(userAllowed,Users_AllowedEntity.class);
-        usersAllowedEntity.setDocumentType(modelMapper.map(documentType, Document_TypeEntity.class));
-        usersAllowedEntity.setUserType(modelMapper.map(userAllowedType, Users_allowed_typesEntity.class));
+        usersAllowedEntity.setDocumentType(documentType.getId());
+        usersAllowedEntity.setUserType(userAllowedType.getId());
         usersAllowedEntity.setCreated_user(1);
         usersAllowedEntity.setCreated_date(LocalDateTime.now());
         UserAllowed users_allowed=modelMapper.map(users_allowedRepository.save(usersAllowedEntity), UserAllowed.class);

@@ -13,8 +13,8 @@ public class UserAllowed {
     private Long id;
     private String document;
     private String name;
-    private UserAllowedType userType;
-    private DocumentType documentType;
+    private Long userType;
+    private Long documentType;
     private Integer created_user;
     private LocalDateTime created_date;
     private Integer last_updated_user;

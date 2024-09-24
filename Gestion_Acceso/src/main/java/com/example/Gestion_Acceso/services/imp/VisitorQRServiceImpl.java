@@ -6,6 +6,8 @@ import com.example.Gestion_Acceso.models.QRCodeData;
 import com.example.Gestion_Acceso.models.Visitors;
 
 import com.example.Gestion_Acceso.repositories.QRCodeRepository;
+import com.example.Gestion_Acceso.repositories.Types.Document_TypeRepository;
+import com.example.Gestion_Acceso.repositories.Types.Vehicle_TypeRepository;
 import com.example.Gestion_Acceso.services.QrCodeService;
 import com.example.Gestion_Acceso.services.VisitorQRService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,9 +22,11 @@ import java.util.UUID;
 
 @Service
 public class VisitorQRServiceImpl implements VisitorQRService {
+    @Autowired
+    private Document_TypeRepository document_typeRepository;
 
     @Autowired
-    private QrCodeService qrCodeService;
+    private Vehicle_TypeRepository vehicle_typeRepository;
 
     @Autowired
     private QRCodeRepository qrCodeRepository;
@@ -41,8 +45,8 @@ public class VisitorQRServiceImpl implements VisitorQRService {
                 qrCodeData.setNeighborId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
                 qrCodeData.setName(visitor.getUserAllowed().getName());
                 qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
-                qrCodeData.setDocumentType(visitor.getUserAllowed().getDocumentType().getDescription());
-                qrCodeData.setVehicle(visitor.getUserAllowed().getVehicles().get(0).getVehicleTypeId().getDescription());
+                qrCodeData.setDocumentType(document_typeRepository.findById(visitor.getUserAllowed().getDocumentType()).get().getDescription());
+                qrCodeData.setVehicle(vehicle_typeRepository.findById(visitor.getUserAllowed().getVehicles().get(0).getVehicleType()).get().getDescription());
                 qrCodeData.setPlate(visitor.getUserAllowed().getVehicles().get(0).getPlate());
                 qrCodeData.setGeneratedDate(LocalDateTime.now());
                 qrCodeData.setStartDate(visitor.getUserAllowed().getAuthRanges().get(0).getInitDate().atStartOfDay());
@@ -54,7 +58,7 @@ public class VisitorQRServiceImpl implements VisitorQRService {
            qrCodeData.setNeighborId(visitor.getUserAllowed().getAuthRanges().get(0).getNeighbor_Id());
            qrCodeData.setName(visitor.getUserAllowed().getName());
            qrCodeData.setDocument(visitor.getUserAllowed().getDocument());
-           qrCodeData.setDocumentType(visitor.getUserAllowed().getDocumentType().getDescription());
+           qrCodeData.setDocumentType(document_typeRepository.findById(visitor.getUserAllowed().getDocumentType()).get().getDescription());
            qrCodeData.setVehicle("not vehicle");
            qrCodeData.setPlate("not plate");
            qrCodeData.setGeneratedDate(LocalDateTime.now());
