@@ -34,39 +34,39 @@ class User_AllowedServiceImpTest {
 
     @Test
     void createUserAllowed() {
-//        NewUserAllowedDto newUserAllowedDto=new NewUserAllowedDto();
-//        newUserAllowedDto.setDocument("1234");
-//        newUserAllowedDto.setEmail("juan@gmail");
-//        newUserAllowedDto.setName("juan");
-//        Document_TypeDto documentTypeDto=new Document_TypeDto();
-//        documentTypeDto.setDescription("DNI");
-//        User_allowedTypeDto user_allowedTypeDto=new User_allowedTypeDto();
-//        user_allowedTypeDto.setDescription("Visitor");
-//        newUserAllowedDto.setUser_allowed_Type(user_allowedTypeDto);
-//        newUserAllowedDto.setDocumentType(documentTypeDto);
-//
-//        Document_TypeEntity document_typeEntity=new Document_TypeEntity();
-//        document_typeEntity.setDescription("DNI");
-//        document_typeEntity.setId(1L);
-//        Mockito.when(document_typeRepository.getByDescription("DNI")).thenReturn(document_typeEntity);
-//
-//        Users_allowed_typesEntity users_allowed_typesEntity=new Users_allowed_typesEntity();
-//        users_allowed_typesEntity.setId(1L);
-//        users_allowed_typesEntity.setDescription("Visitor");
-//        Mockito.when(user_allowed_typeRepository.getByDescription("Visitor")).thenReturn(users_allowed_typesEntity);
-//
-//        Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
-//        users_allowedEntity.setUserType(users_allowed_typesEntity);
-//        users_allowedEntity.setName("juan");
-//        users_allowedEntity.setEmail("juan@gmail");
-//        users_allowedEntity.setDocumentType(document_typeEntity);
-//        users_allowedEntity.setId(1L);
-//        users_allowedEntity.setDocument("1234");
-//        Mockito.when(users_allowedRepository.save(Mockito.any(Users_AllowedEntity.class))).thenReturn(users_allowedEntity);
-//        Mockito.when(users_allowedRepository.getByDocument("1234")).thenReturn(users_allowedEntity);
-//
-//        UserAllowed userAllowed=users_allowedService.createUserAllowed(newUserAllowedDto);
-//        Assertions.assertNotNull(userAllowed);
-//        Assertions.assertEquals("juan",userAllowed.getName());
+        NewUserAllowedDto newUserAllowedDto=new NewUserAllowedDto();
+        newUserAllowedDto.setDocument("1234");
+        newUserAllowedDto.setEmail("juan@gmail");
+        newUserAllowedDto.setName("juan");
+        Document_TypeDto documentTypeDto=new Document_TypeDto();
+        documentTypeDto.setDescription("DNI");
+        User_allowedTypeDto user_allowedTypeDto=new User_allowedTypeDto();
+        user_allowedTypeDto.setDescription("Visitor");
+        newUserAllowedDto.setUser_allowed_Type(user_allowedTypeDto);
+        newUserAllowedDto.setDocumentType(documentTypeDto);
+
+        Document_TypeEntity document_typeEntity=new Document_TypeEntity();
+        document_typeEntity.setDescription("DNI");
+        document_typeEntity.setId(1L);
+        Mockito.when(document_typeRepository.getByDescription("DNI")).thenReturn(document_typeEntity);
+
+        Users_allowed_typesEntity users_allowed_typesEntity=new Users_allowed_typesEntity();
+        users_allowed_typesEntity.setId(1L);
+        users_allowed_typesEntity.setDescription("Visitor");
+        Mockito.when(user_allowed_typeRepository.getByDescription("Visitor")).thenReturn(users_allowed_typesEntity);
+
+        Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
+        users_allowedEntity.setUserType(users_allowed_typesEntity.getId());
+        users_allowedEntity.setName("juan");
+        users_allowedEntity.setEmail("juan@gmail");
+        users_allowedEntity.setDocumentType(document_typeEntity.getId());
+        users_allowedEntity.setId(1L);
+        users_allowedEntity.setDocument("1234");
+        Mockito.when(users_allowedRepository.save(Mockito.any(Users_AllowedEntity.class))).thenReturn(users_allowedEntity);
+        Mockito.when(users_allowedRepository.getByDocument("1234")).thenReturn(users_allowedEntity);
+
+        UserAllowed userAllowed=users_allowedService.createUserAllowed(newUserAllowedDto);
+        Assertions.assertNotNull(userAllowed);
+        Assertions.assertEquals("juan",userAllowed.getName());
     }
 }
