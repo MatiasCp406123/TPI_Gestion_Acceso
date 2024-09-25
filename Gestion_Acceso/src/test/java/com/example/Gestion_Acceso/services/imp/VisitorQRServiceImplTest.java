@@ -122,61 +122,35 @@ class VisitorQRServiceImplTest {
     }
 
     @Test
-    void getQRCodeById() {
-//        Long QrCodeId=22L;
-//
-//        Users_allowed_typesEntity usersAllowedTypesEntity=new Users_allowed_typesEntity();
-//        usersAllowedTypesEntity.setId(1L);
-//        usersAllowedTypesEntity.setDescription("Fede");
-//        usersAllowedTypesEntity.setCreated_user(33);
-//
-//        Document_TypeEntity documentTypeEntity=new Document_TypeEntity();
-//        documentTypeEntity.setId(1l);
-//        documentTypeEntity.setDescription("DNI");
-//
-//        Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
-//        users_allowedEntity.setId(1L);
-//        users_allowedEntity.setUserType(usersAllowedTypesEntity);
-//        users_allowedEntity.setDocumentType(documentTypeEntity);
-//
-//
-//        QRCode_Entity qrCodeEntity= new QRCode_Entity();
-//        qrCodeEntity.setId(QrCodeId);
-//        qrCodeEntity.setQrCodeData("asd");
-//        qrCodeEntity.setIsValid(true);
-//        qrCodeEntity.setUserAllowed(users_allowedEntity);
-//
-//        Mockito.when(qrCodeRepository.findById(22L)).thenReturn(Optional.of(qrCodeEntity));
-//        QRCode_Entity result=qrCodeRepository.findById(22l).get();
-//
-//        Assertions.assertNotNull(result);
-//        Assertions.assertEquals(qrCodeEntity.getId(),result.getId());        Long QrCodeId=22L;
-//
-//        Users_allowed_typesEntity usersAllowedTypesEntity=new Users_allowed_typesEntity();
-//        usersAllowedTypesEntity.setId(1L);
-//        usersAllowedTypesEntity.setDescription("Fede");
-//        usersAllowedTypesEntity.setCreated_user(33);
-//
-//        Document_TypeEntity documentTypeEntity=new Document_TypeEntity();
-//        documentTypeEntity.setId(1l);
-//        documentTypeEntity.setDescription("DNI");
-//
-//        Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
-//        users_allowedEntity.setId(1L);
-//        users_allowedEntity.setUserType(usersAllowedTypesEntity);
-//        users_allowedEntity.setDocumentType(documentTypeEntity);
-//
-//
-//        QRCode_Entity qrCodeEntity= new QRCode_Entity();
-//        qrCodeEntity.setId(QrCodeId);
-//        qrCodeEntity.setQrCodeData("asd");
-//        qrCodeEntity.setIsValid(true);
-//        qrCodeEntity.setUserAllowed(users_allowedEntity);
-//
-//        Mockito.when(qrCodeRepository.findById(22L)).thenReturn(Optional.of(qrCodeEntity));
-//        QRCode_Entity result=qrCodeRepository.findById(22l).get();
-//
-//        Assertions.assertNotNull(result);
-//        Assertions.assertEquals(qrCodeEntity.getId(),result.getId());
+    void getQRCodeById() throws Exception {
+        Long QrCodeId=22L;
+
+        Users_allowed_typesEntity usersAllowedTypesEntity=new Users_allowed_typesEntity();
+        usersAllowedTypesEntity.setId(1L);
+        usersAllowedTypesEntity.setDescription("Fede");
+        usersAllowedTypesEntity.setCreated_user(33);
+
+        Document_TypeEntity documentTypeEntity=new Document_TypeEntity();
+        documentTypeEntity.setId(1l);
+        documentTypeEntity.setDescription("DNI");
+
+        Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
+        users_allowedEntity.setId(1L);
+        users_allowedEntity.setUserType(usersAllowedTypesEntity.getId());
+        users_allowedEntity.setDocumentType(documentTypeEntity.getId());
+
+
+        QRCode_Entity qrCodeEntity= new QRCode_Entity();
+        qrCodeEntity.setId(QrCodeId);
+        qrCodeEntity.setQrCodeData("asd");
+        qrCodeEntity.setIsValid(true);
+        qrCodeEntity.setUserAllowed(users_allowedEntity);
+
+        Mockito.when(qrCodeRepository.findById(22L)).thenReturn(Optional.of(qrCodeEntity));
+        QRCode_Entity result=visitorQRService.getQRCodeById(22L);
+
+        Assertions.assertNotNull(result);
+        Assertions.assertEquals(qrCodeEntity.getId(),result.getId());
+        Assertions.assertSame(qrCodeEntity,result);
     }
 }
