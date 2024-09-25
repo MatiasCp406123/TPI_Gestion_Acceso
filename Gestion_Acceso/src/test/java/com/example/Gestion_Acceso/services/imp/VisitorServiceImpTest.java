@@ -58,7 +58,7 @@ class VisitorServiceImpTest {
         Mockito.when(userAllowedService.createUserAllowed(visitorDto.getNewUserAllowedDto())).thenReturn(userAllowed);
         Mockito.when(authRangeService.creatRange(visitorDto.getNewAuthRangeDto(),userAllowed.getId())).thenReturn(authRange);
         Mockito.when(allowedDayService.CreateAllowedDays(visitorDto.getNewAuthRangeDto().getAllowedDaysDtos(),authRange.getId())).thenReturn(allowedDayList);
-        Mockito.when(vehicleService.createVehicle(visitorDto.getNewVehicleDto())).thenReturn(vehicle);
+        Mockito.when(vehicleService.createVehicle(visitorDto.getNewVehicleDto(),1l)).thenReturn(vehicle);
 
         Visitors visitor= visitorService.crateVisitor(visitorDto);
         Assertions.assertNotNull(visitor);

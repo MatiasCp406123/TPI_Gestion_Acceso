@@ -20,23 +20,25 @@ public class VisitorServiceImp implements VisitorService {
     @Autowired
     private VehicleService vehicleService;
     @Override
-    public Visitors crateVisitor(NewVisitorDto newVisitorDto) {
-        Visitors visitors=new Visitors();
-        UserAllowed userAllowed=users_allowedService.createUserAllowed(newVisitorDto.getNewUserAllowedDto());
-        AuthRange authRange=authRangesService.creatRange(newVisitorDto.getNewAuthRangeDto(),userAllowed.getId());
-        List<AllowedDay>allowedDayList=allowedDaysService.CreateAllowedDays(newVisitorDto.getNewAuthRangeDto().getAllowedDaysDtos(),authRange.getId());
-        Vehicle vehicle=vehicleService.createVehicle(newVisitorDto.getNewVehicleDto());
+    public List<UserAllowed> crateVisitor(List<NewVisitorDto> newVisitorDto) {
+        List<UserAllowed>visitors=new ArrayList<>();
+        for(NewVisitorDto newVisitorDto1:newVisitorDto) {
+            UserAllowed userAllowed = users_allowedService.createUserAllowed(newVisitorDto1.getNewUserAllowedDto());
+            AuthRange authRange = authRangesService.creatRange(newVisitorDto1.getNewAuthRangeDto(), userAllowed.getId());
+            List<AllowedDay> allowedDayList = allowedDaysService.CreateAllowedDays(newVisitorDto1.getNewAuthRangeDto().getAllowedDaysDtos(), authRange.getId());
+            Vehicle vehicle = vehicleService.createVehicle(newVisitorDto1.getNewVehicleDto(), userAllowed.getId());
 
-        if(vehicle!=null){
-            List<Vehicle>vehicleList=new ArrayList<>();
-            vehicleList.add(vehicle);
-            userAllowed.setVehicles(vehicleList);
+            if (vehicle != null) {
+                List<Vehicle> vehicleList = new ArrayList<>();
+                vehicleList.add(vehicle);
+                userAllowed.setVehicles(vehicleList);
+            }
+            authRange.setAllowedDays(allowedDayList);
+            List<AuthRange> authRangeList = new ArrayList<>();
+            authRangeList.add(authRange);
+            userAllowed.setAuthRanges(authRangeList);
+            visitors.add(userAllowed);
         }
-        authRange.setAllowedDays(allowedDayList);
-        List<AuthRange>authRangeList=new ArrayList<>();
-        authRangeList.add(authRange);
-        userAllowed.setAuthRanges(authRangeList);
-        visitors.setUserAllowed(userAllowed);
         return  visitors;
     }
 }

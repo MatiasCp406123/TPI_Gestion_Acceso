@@ -56,10 +56,10 @@ class User_AllowedServiceImpTest {
         Mockito.when(user_allowed_typeRepository.getByDescription("Visitor")).thenReturn(users_allowed_typesEntity);
 
         Users_AllowedEntity users_allowedEntity=new Users_AllowedEntity();
-        users_allowedEntity.setUserType(users_allowed_typesEntity.getId());
+        users_allowedEntity.setUserType(users_allowed_typesEntity);
         users_allowedEntity.setName("juan");
         users_allowedEntity.setEmail("juan@gmail");
-        users_allowedEntity.setDocumentType(document_typeEntity.getId());
+        users_allowedEntity.setDocumentType(document_typeEntity);
         users_allowedEntity.setId(1L);
         users_allowedEntity.setDocument("1234");
         Mockito.when(users_allowedRepository.save(Mockito.any(Users_AllowedEntity.class))).thenReturn(users_allowedEntity);

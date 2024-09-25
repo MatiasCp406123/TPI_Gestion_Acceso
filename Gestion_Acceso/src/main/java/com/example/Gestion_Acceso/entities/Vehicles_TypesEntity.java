@@ -15,7 +15,7 @@ import java.util.Date;
 public class Vehicles_TypesEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String description;
     @Column(name = "created_user")
     private Integer createdUser;

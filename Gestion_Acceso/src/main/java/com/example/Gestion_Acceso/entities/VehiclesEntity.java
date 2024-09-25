@@ -17,7 +17,9 @@ public class VehiclesEntity {
 
     @JoinColumn(name = "vehicle_type_id")
     private Long vehicleType;
-
+    @ManyToOne
+    @JoinColumn(name = "user_allowed_id")
+    private Users_AllowedEntity users_allowedId;
     private String plate;
 
     private String insurace;

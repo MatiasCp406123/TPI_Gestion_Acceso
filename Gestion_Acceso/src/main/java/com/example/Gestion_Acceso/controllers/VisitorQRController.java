@@ -1,7 +1,7 @@
 package com.example.Gestion_Acceso.controllers;
 
 import com.example.Gestion_Acceso.entities.QRCode_Entity;
-import com.example.Gestion_Acceso.models.Visitors;
+import com.example.Gestion_Acceso.models.UserAllowed;
 import com.example.Gestion_Acceso.services.VisitorQRService;
 import com.example.Gestion_Acceso.services.QrCodeService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -15,6 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/visitor-qr")
@@ -31,7 +33,7 @@ public class VisitorQRController {
     @ApiResponse(responseCode = "200", description = "QR code generated successfully",
             content = @Content(schema = @Schema(implementation = QRCode_Entity.class)))
     @PostMapping("/generate")
-    public ResponseEntity<?> generateQRForVisitor(@RequestBody Visitors visitor) {
+    public ResponseEntity<?> generateQRForVisitor(@RequestBody List<UserAllowed> visitor) {
         try {
             QRCode_Entity qrCode = visitorQRService.generateAndSaveQRForVisitor(visitor);
             return ResponseEntity.ok(qrCode);
