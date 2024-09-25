@@ -7,32 +7,27 @@ import com.example.Gestion_Acceso.repositories.QRCodeRepository;
 import com.example.Gestion_Acceso.repositories.Types.Document_TypeRepository;
 import com.example.Gestion_Acceso.repositories.Types.Vehicle_TypeRepository;
 import com.example.Gestion_Acceso.services.VisitorQRService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationConfig;
+
 import com.fasterxml.jackson.databind.SerializationFeature;
-import lombok.SneakyThrows;
-import org.apache.catalina.User;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+
 
 @SpringBootTest
 class VisitorQRServiceImplTest {
@@ -118,7 +113,27 @@ class VisitorQRServiceImplTest {
 
 
     @Test
-    void validateQRCode() {
+    void validateQRCode() throws Exception {
+        LocalDateTime now = LocalDateTime.now();
+        QRCodeData qrCodeData = new QRCodeData();
+        qrCodeData.setNeighborId(33);
+        qrCodeData.setName("hola");
+        qrCodeData.setStartDate(now.minusDays(1));
+        qrCodeData.setEndDate(now.plusDays(1));
+
+        String qrCodeDataJson = objectMapper.writeValueAsString(qrCodeData);
+
+        QRCode_Entity qrCodeEntity = new QRCode_Entity();
+        qrCodeEntity.setQrCodeData(qrCodeDataJson);
+        qrCodeEntity.setId(1L);
+        qrCodeEntity.setIsValid(true);
+        qrCodeEntity.setCreatedDate(now);
+
+        Mockito.when(qrCodeRepository.findByQrCodeData(qrCodeDataJson)).thenReturn(Optional.of(qrCodeEntity));
+
+        boolean result = visitorQRService.validateQRCode(qrCodeDataJson);
+
+        Assertions.assertTrue(result);
     }
 
     @Test
