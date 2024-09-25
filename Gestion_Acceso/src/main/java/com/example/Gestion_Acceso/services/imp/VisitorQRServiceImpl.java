@@ -10,6 +10,8 @@ import com.example.Gestion_Acceso.repositories.Types.Document_TypeRepository;
 import com.example.Gestion_Acceso.repositories.Types.Vehicle_TypeRepository;
 import com.example.Gestion_Acceso.services.VisitorQRService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.catalina.User;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,9 +41,12 @@ public class VisitorQRServiceImpl implements VisitorQRService {
 
     @Override
     public QRCode_Entity generateAndSaveQRForVisitor(List<UserAllowed> visitors) throws Exception {
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        objectMapper.registerModule(new JavaTimeModule());
         List<QRCodeData>qrCodeEntityList=new ArrayList<>();
-        QRCodeData qrCodeData = new QRCodeData();
+
         for(UserAllowed visitor:visitors) {
+            QRCodeData qrCodeData = new QRCodeData();
             if (visitor.getVehicles() != null) {
 
                 qrCodeData.setNeighborId(visitor.getAuthRanges().get(0).getNeighbor_Id());
@@ -76,10 +81,16 @@ public class VisitorQRServiceImpl implements VisitorQRService {
             qrCodeEntity.setQrCodeData(qrCodeJson);
             qrCodeEntity.setCreatedDate(LocalDateTime.now());
             qrCodeEntity.setIsValid(true);
-            for(UserAllowed visitor:visitors) {
-                Users_AllowedEntity userAllowedEntity = modelMapper.map(visitor, Users_AllowedEntity.class);
-                qrCodeEntity.setUserAllowed(userAllowedEntity);
+            if(!visitors.isEmpty()){
+                for(UserAllowed visitor:visitors) {
+                    Users_AllowedEntity userAllowedEntity = modelMapper.map(visitor, Users_AllowedEntity.class);
+                    qrCodeEntity.setUserAllowed(userAllowedEntity);
+                }
+
+            } else {
+                throw new IllegalArgumentException("the list of visitors is empty");
             }
+
         return qrCodeRepository.save(qrCodeEntity);
 
     }
