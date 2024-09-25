@@ -42,7 +42,6 @@ public class VisitorQRServiceImpl implements VisitorQRService {
     @Override
     public QRCode_Entity generateAndSaveQRForVisitor(List<UserAllowed> visitors) throws Exception {
         objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-        objectMapper.registerModule(new JavaTimeModule());
         List<QRCodeData>qrCodeEntityList=new ArrayList<>();
 
         for(UserAllowed visitor:visitors) {
