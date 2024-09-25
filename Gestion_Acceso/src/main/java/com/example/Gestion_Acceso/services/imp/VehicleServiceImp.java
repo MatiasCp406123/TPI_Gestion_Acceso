@@ -46,6 +46,6 @@ public class VehicleServiceImp implements VehicleService {
         vehiclesEntity.setCreatedUser(1);
         vehiclesEntity.setCreatedDate(date);
         return modelMapper.map(vehicleRepository.save(vehiclesEntity), Vehicle.class);
-       // return response;
+
     }
 }

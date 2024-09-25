@@ -29,40 +29,45 @@ class VisitorServiceImpTest {
     private VehicleService vehicleService;
     @Test
     void createVisitor(){
-//        UserAllowed userAllowed=new UserAllowed();
-//        userAllowed.setId(1l);
-//        userAllowed.setName("Matias");
-//        userAllowed.setDocument("4500000");
-//        LocalDate fecha= LocalDate.now();
-//
-//        NewVisitorDto visitorDto=new NewVisitorDto();
-//
-//        NewAuthRangeDto authRangeDto=new NewAuthRangeDto();
-//        authRangeDto.setInit_date(fecha);
-//
-//        NewUserAllowedDto userAllowedDto=new NewUserAllowedDto();
-//        userAllowedDto.setDocument("4500000");
-//
-//        NewVehicleDto vehicleDto=new NewVehicleDto();
-//        vehicleDto.setInsurace("ok");
-//
-//        AuthRange authRange=new AuthRange();
-//        authRange.setId(1l);
-//
-//        List<AllowedDay>allowedDayList=new ArrayList<>();
-//        visitorDto.setNewAuthRangeDto(authRangeDto);
-//        visitorDto.setNewVehicleDto(vehicleDto);
-//        visitorDto.setNewUserAllowedDto(userAllowedDto);
-//        Vehicle vehicle=new Vehicle();
-//        vehicle.setId(5l);
-//        Mockito.when(userAllowedService.createUserAllowed(visitorDto.getNewUserAllowedDto())).thenReturn(userAllowed);
-//        Mockito.when(authRangeService.creatRange(visitorDto.getNewAuthRangeDto(),userAllowed.getId())).thenReturn(authRange);
-//        Mockito.when(allowedDayService.CreateAllowedDays(visitorDto.getNewAuthRangeDto().getAllowedDaysDtos(),authRange.getId())).thenReturn(allowedDayList);
-//        Mockito.when(vehicleService.createVehicle(visitorDto.getNewVehicleDto(),1l)).thenReturn(vehicle);
-//
-//        Visitors visitor= visitorService.crateVisitor(visitorDto);
-//        Assertions.assertNotNull(visitor);
-//        Assertions.assertEquals("Matias",visitor.getUserAllowed().getName());
+        UserAllowed userAllowed=new UserAllowed();
+        userAllowed.setId(1l);
+        userAllowed.setName("Matias");
+        userAllowed.setDocument("4500000");
+        AuthRange authRange=new AuthRange();
+        authRange.setId(1l);
+        Vehicle vehicle=new Vehicle();
+        vehicle.setId(5l);
+        List<AllowedDay>allowedDayList=new ArrayList<>();
+
+
+        NewVisitorDto visitorDto=new NewVisitorDto();
+
+        NewAuthRangeDto authRangeDto=new NewAuthRangeDto();
+        authRangeDto.setInit_date(LocalDate.now());
+
+        NewUserAllowedDto userAllowedDto=new NewUserAllowedDto();
+        userAllowedDto.setDocument("4500000");
+        userAllowedDto.setName("Matias");
+
+        NewVehicleDto vehicleDto=new NewVehicleDto();
+        vehicleDto.setInsurace("ok");
+
+        visitorDto.setNewAuthRangeDto(authRangeDto);
+        visitorDto.setNewVehicleDto(vehicleDto);
+        visitorDto.setNewUserAllowedDto(userAllowedDto);
+
+        List<NewVisitorDto>list=new ArrayList<>();
+        list.add(visitorDto);
+
+        Mockito.when(userAllowedService.createUserAllowed(visitorDto.getNewUserAllowedDto())).thenReturn(userAllowed);
+        Mockito.when(authRangeService.creatRange(visitorDto.getNewAuthRangeDto(),userAllowed.getId())).thenReturn(authRange);
+        Mockito.when(allowedDayService.CreateAllowedDays(visitorDto.getNewAuthRangeDto().getAllowedDaysDtos(),authRange.getId())).thenReturn(allowedDayList);
+        Mockito.when(vehicleService.createVehicle(visitorDto.getNewVehicleDto(),1l)).thenReturn(vehicle);
+
+        List<UserAllowed>visitors= visitorService.crateVisitor(list);
+        Assertions.assertNotNull(visitors);
+        Assertions.assertEquals(visitors.get(0).getName(),list.get(0).getNewUserAllowedDto().getName());
+
     }
 
 }
